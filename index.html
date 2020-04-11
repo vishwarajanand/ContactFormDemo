@@ -1,14 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact Me Forms in websites</title>
+    <title>Contact Me Forms</title>
+    <style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+</style>
   </head>
   <body>
-This page links to various sources for building Contact Me forms for a website.
-<p>
-Check out implementation by Google Forms, <a href="google_forms_demo.html">here</a>.
-</p>
 
+
+
+<p>This page links to various sources for building "Contact Me" forms for a website:</p>
+<button class="collapsible">Powered by Google Forms</button>
+<div class="content">
+<p>
+Use a simple Google form in my personal Google Drive (<a href="https://drive.google.com/drive/folders/1l4Ox3ReMUhyrns8w3Nck77OR9Fmmr-5o?usp=sharing">shared here</a>) and paste the share by iframe link to the HTML page. Responses are shared in the Google Forms.
+
+<div>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfxooerUT5-c5IXdJBnxjQs2ZSmBi_rEbSdgrByKSiPMfJV9w/viewform?embedded=true" width="800" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 </div>
+
+</p>
+</div>
+<button class="collapsible">Powered by HTML mailto link</button>
+<div class="content">
+  <p>One can simply use HTML mailto link:
+I am using the same in my website's contact me form, check it out <a href="https://vishwarajanand.com/contact/"> here</a>.
+</p>
+<xmp>
+    <a href="mailto:vishwaraj.anand00@gmail.com?Subject=Hello">Send Mail</a>
+</xmp>
+</div>
+<button class="collapsible">Use third party services</button>
+<div class="content">
+  <p>You can choose to use third party servive providers for implementing the Contact Me button. Also check whether your website hosting service provides any free plugins or not, because third party could be paid or may be limited in features for free tier. One such example is <a href="https://getsimpleform.com/">Simple Form</a>, which I have implemented but thought to reference here for completeness.</p>
+  <xmp>
+<!-- Use your public form API token for the form_api_token parameter -->
+<form action="https://getsimpleform.com/messages?form_api_token=xxxxxxxxxx" method="post">
+  <input type="hidden" name="redirect_to" value="http://www.yourdomain.com/destination-page/" />
+  <input type="text" name="name" />
+  <input type="text" name="email" placeholder="Email Address" />
+  <input type="text" name="message" placeholder="message" />
+  <input type="submit" value="Submit" />
+</form>
+  </xmp>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
 </body>
 </html>
